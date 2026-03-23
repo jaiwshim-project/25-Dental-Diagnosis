@@ -102,11 +102,13 @@
 
                 <!-- Step 4 -->
                 <div class="process-step">
-                    <div class="step-number">4</div>
-                    <div class="step-icon">🔍</div>
-                    <h4>조직진단 실시(온라인)</h4>
-                    <p>전체 구성원<br>조직진단</p>
-                    <p class="schedule">4월 9(목) ~ 15(수)</p>
+                    <a href="main-survey.html" class="step-link">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">🔍</div>
+                        <h4>조직진단 실시(온라인)</h4>
+                        <p>전체 구성원<br>조직진단</p>
+                        <p class="schedule">4월 9(목) ~ 15(수)</p>
+                    </a>
                 </div>
 
                 <!-- Step 5 -->
@@ -477,6 +479,25 @@
             font-weight: 600;
             margin-top: 4px;
             line-height: 1.3;
+        }
+
+        /* Step Link */
+        .step-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .process-step:has(.step-link) {
+            cursor: pointer;
+        }
+
+        .process-step:has(.step-link):hover {
+            background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
         }
 
         .survey-btn {
