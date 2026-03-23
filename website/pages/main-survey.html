@@ -175,14 +175,29 @@
                         <li>✓ 충분한 시간을 갖고 진행해주세요 (약 20~30분)</li>
                         <li>✓ 조용한 환경에서 응답해주세요</li>
                         <li>✓ 솔직한 의견이 정확한 진단의 기초가 됩니다</li>
-                        <li>✓ 진단 중간에 일시중지할 수 있습니다</li>
+                        <li>✓ 진단 중간에 잠시 중지할 수 있습니다. 다만 장시간 멈추는 경우 앞에서 작성한 진단 내용이 사라질 수 있습니다. 반드시 시작하면 끝까지 완성하세요.</li>
                         <li>✓ 응답 내용은 완전히 비공개로 처리됩니다</li>
                     </ul>
                 </div>
 
                 <!-- Call to Action -->
+                <div class="survey-role-selection">
+                    <h3>👤 역할을 선택하여 진단을 시작하세요</h3>
+                    <div class="role-buttons">
+                        <a href="javascript:void(0);" class="role-btn executive-btn" onclick="startExecutiveSurvey()">
+                            <div class="role-icon">👔</div>
+                            <span class="role-title">조직진단(회장단)</span>
+                            <span class="role-desc">시작하기</span>
+                        </a>
+                        <a href="javascript:void(0);" class="role-btn employee-btn" onclick="startEmployeeSurvey()">
+                            <div class="role-icon">👩‍💼</div>
+                            <span class="role-title">조직진단(직원)</span>
+                            <span class="role-desc">시작하기</span>
+                        </a>
+                    </div>
+                </div>
+
                 <div class="cta-buttons">
-                    <a href="javascript:void(0);" class="btn btn-primary" onclick="startSurvey()">조직진단 시작하기</a>
                     <a href="kdha.html" class="btn btn-secondary">돌아가기</a>
                 </div>
             </div>
@@ -242,14 +257,14 @@
 
         .survey-header h1 {
             font-size: 36px;
-            color: #0f2744;
+            color: #0a0e27;
             margin: 20px 0 15px 0;
             font-weight: 700;
         }
 
         .survey-header p {
             font-size: 15px;
-            color: #334155;
+            color: #2d3748;
             line-height: 1.8;
             margin-bottom: 40px;
         }
@@ -298,22 +313,29 @@
         }
 
         .content-section {
-            background: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
             padding: 40px;
             border-radius: 12px;
             margin-bottom: 30px;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .content-section:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border-color: #cbd5e1;
         }
 
         .content-section h2 {
             font-size: 20px;
-            color: #0f2744;
+            color: #0a0e27;
             margin: 0 0 20px 0;
             font-weight: 700;
         }
 
         .content-section p {
-            color: #334155;
+            color: #2d3748;
             line-height: 1.8;
             margin: 0 0 10px 0;
             font-size: 14px;
@@ -333,9 +355,16 @@
             display: flex;
             gap: 15px;
             padding: 15px;
-            background: #f0f9ff;
+            background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
             border-left: 4px solid #2563eb;
             border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .area-item:hover {
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+            border-color: #60a5fa;
         }
 
         .area-number {
@@ -354,14 +383,14 @@
 
         .area-item h4 {
             font-size: 14px;
-            color: #0f2744;
+            color: #0a0e27;
             margin: 0 0 4px 0;
             font-weight: 600;
         }
 
         .area-item p {
             font-size: 13px;
-            color: #64748b;
+            color: #2d3748;
             margin: 0;
         }
 
@@ -375,8 +404,15 @@
         .process-item {
             text-align: center;
             padding: 20px;
-            background: #f0f9ff;
+            background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
+            border: 1px solid #bfdbfe;
             border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .process-item:hover {
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+            transform: translateY(-2px);
         }
 
         .process-icon {
@@ -387,21 +423,22 @@
 
         .process-item h4 {
             font-size: 15px;
-            color: #0f2744;
+            color: #0a0e27;
             margin: 0 0 8px 0;
             font-weight: 600;
         }
 
         .process-item p {
             font-size: 13px;
-            color: #64748b;
+            color: #2d3748;
             margin: 0;
         }
 
         /* Important Section */
         .content-section.important {
-            background: #fffbeb;
-            border-top: 4px solid #fbbf24;
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border: 2px solid #fbbf24;
+            border-top: 4px solid #f59e0b;
         }
 
         .content-section.important h2 {
@@ -426,18 +463,116 @@
             border-bottom: none;
         }
 
+        /* Survey Role Selection */
+        .survey-role-selection {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .survey-role-selection h3 {
+            font-size: 18px;
+            color: #0a0e27;
+            margin: 0 0 30px 0;
+            font-weight: 700;
+        }
+
+        .role-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .role-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .role-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+
+        .role-btn:hover::before {
+            left: 100%;
+        }
+
+        .role-btn > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .executive-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .executive-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .employee-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .employee-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+        }
+
+        .role-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .role-title {
+            display: block;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .role-desc {
+            display: block;
+            font-size: 13px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
         /* CTA Buttons */
         .cta-buttons {
             display: flex;
             gap: 15px;
             justify-content: center;
-            margin-top: 40px;
+            margin-top: 20px;
             flex-wrap: wrap;
         }
 
         .cta-buttons .btn {
-            padding: 14px 40px;
-            font-size: 15px;
+            padding: 12px 35px;
+            font-size: 14px;
             font-weight: 700;
             border: none;
             border-radius: 8px;
@@ -445,25 +580,15 @@
             transition: all 0.3s ease;
         }
 
-        .cta-buttons .btn-primary {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            color: white;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        }
-
-        .cta-buttons .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-        }
-
         .cta-buttons .btn-secondary {
-            background: white;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
             color: #2563eb;
             border: 2px solid #2563eb;
         }
 
         .cta-buttons .btn-secondary:hover {
             background: #f0f9ff;
+            transform: translateY(-2px);
         }
 
         /* Responsive */
@@ -489,6 +614,28 @@
                 grid-template-columns: 1fr;
             }
 
+            .role-buttons {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .role-btn {
+                padding: 30px 20px;
+            }
+
+            .role-icon {
+                font-size: 40px;
+                margin-bottom: 12px;
+            }
+
+            .role-title {
+                font-size: 15px;
+            }
+
+            .role-desc {
+                font-size: 12px;
+            }
+
             .cta-buttons {
                 flex-direction: column;
             }
@@ -500,10 +647,12 @@
     </style>
 
     <script>
-        function startSurvey() {
-            alert('본 조직진단 시스템이 현재 준비 중입니다.\n4월 9일(목) 이후 이용 가능합니다.');
-            // 실제 구현 시:
-            // window.location.href = '본_진단_URL';
+        function startExecutiveSurvey() {
+            window.location.href = 'executive-survey.html';
+        }
+
+        function startEmployeeSurvey() {
+            window.location.href = 'employee-survey.html';
         }
     </script>
 </body>

@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -515,7 +518,7 @@
         }
 
         // Form Submit
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
             // Check if all textareas are filled
@@ -531,10 +534,40 @@
                 return;
             }
 
-            // Form submission
-            alert('설문이 성공적으로 제출되었습니다.\n진단 결과는 향후 안내될 예정입니다.');
-            // 실제로는 서버로 데이터 전송
-            // form.submit();
+            // Supabase에 데이터 저장
+            try {
+                const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+                const formData = {
+                    q1: document.querySelector('textarea[name="q1"]').value,
+                    q2: document.querySelector('textarea[name="q2"]').value,
+                    q3: document.querySelector('textarea[name="q3"]').value,
+                    q4: document.querySelector('textarea[name="q4"]').value,
+                    q5: document.querySelector('textarea[name="q5"]').value,
+                    q6: document.querySelector('textarea[name="q6"]').value,
+                    q7: document.querySelector('textarea[name="q7"]').value,
+                    q8: document.querySelector('textarea[name="q8"]').value,
+                    q9: document.querySelector('textarea[name="q9"]').value,
+                    q10: parseInt(document.querySelector('input[name="q10"]:checked').value)
+                };
+
+                const { error } = await supabase
+                    .from('pre_survey_employee')
+                    .insert([formData]);
+
+                if (error) {
+                    alert('설문 저장 중 오류가 발생했습니다.\n' + error.message);
+                    return;
+                }
+
+                alert('설문이 성공적으로 제출되었습니다.\n진단 결과는 향후 안내될 예정입니다.');
+                // 완료 후 돌아가기
+                setTimeout(() => {
+                    window.location.href = 'survey.html';
+                }, 1000);
+            } catch (err) {
+                alert('오류 발생: ' + err.message);
+            }
         });
     </script>
 </body>
