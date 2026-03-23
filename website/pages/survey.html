@@ -336,13 +336,11 @@
     <script>
         function handleSurvey(type) {
             if (type === 'executive') {
-                // 회장단 설문 URL로 이동 (실제 URL로 변경)
-                window.open('https://survey.example.com/executive', '_blank');
-                // 또는: window.location.href = 'https://survey.example.com/executive';
+                // 회장단 설문으로 이동
+                window.location.href = 'pre-survey-executive.html';
             } else if (type === 'staff') {
-                // 직원 설문 URL로 이동 (실제 URL로 변경)
-                window.open('https://survey.example.com/staff', '_blank');
-                // 또는: window.location.href = 'https://survey.example.com/staff';
+                // 직원 설문으로 이동
+                window.location.href = 'pre-survey-employee.html';
             }
         }
     </script>
